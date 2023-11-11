@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] protected float maxHealth = 100f;
     [SerializeField] private float health;
     
     [SerializeField] private AudioClip highHealthHurtSound;
@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private AudioClip lowHealthHurtSound;
     [SerializeField] private AudioClip deathSound;
 
-    public bool isDeadOrDying;
+    protected bool isDeadOrDying;
 
     public virtual void Awake()
     {
