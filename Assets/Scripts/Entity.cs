@@ -5,7 +5,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [SerializeField] protected float maxHealth = 100f;
-    [SerializeField] private float health;
+    protected float health;
     
     [SerializeField] private AudioClip highHealthHurtSound;
     [SerializeField] private AudioClip mediumHealthHurtSound;
@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
         health = maxHealth;
     }
 
-    public void Hurt(float damage)
+    public virtual void Hurt(float damage)
     {
         health -= damage;
         PlayHurtSound();

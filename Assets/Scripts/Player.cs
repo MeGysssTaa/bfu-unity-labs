@@ -94,7 +94,7 @@ public class Player : Entity
         nextMoveDir = new Vector3(inputHor, 0f, inputVer).normalized;
         nextMoveDir = GetHorizontalCameraTransform().TransformDirection(nextMoveDir);
         isSprinting = Input.GetKey(KeyCode.LeftShift);
-
+        
         var isMoving = !nextMoveDir.AlmostZero();
 
         int animMoveState = (isMoving, isSprinting) switch
@@ -198,7 +198,11 @@ public class Player : Entity
 
     private bool IsOnGround()
     {
-        return Physics.Raycast(transform.position, Vector3.down, bodyToFeetDist + 0.1f);
+        return Physics.Raycast(
+            transform.position + new Vector3(0f, bodyToFeetDist, 0f),
+            Vector3.down, 
+            bodyToFeetDist + 0.1f
+        );
     }
 
     private void Shoot()

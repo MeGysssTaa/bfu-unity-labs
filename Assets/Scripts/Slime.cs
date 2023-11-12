@@ -212,6 +212,14 @@ public class Slime : Entity
         otherEntity.Hurt(damageToPlayer);
     }
 
+    public override void Hurt(float damage)
+    {
+        base.Hurt(damage);
+        
+        slimeState = SlimeState.Walk;
+        StartMovingTo(player.transform.position);
+    }
+
     protected override void PlayHurtAnimation()
     {
         anim.SetInteger(AnimParamDamageType, 0);
